@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PS5 Master Guide — Complete eBook</title>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #00d4ff;
+    --accent2: #7c3aed;
+    --text: #e8e8f0;
+    --muted: #8888aa;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; }
+  .nav-badge {
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    color: #fff; font-weight: 800; font-size: 12px;
+    padding: 4px 10px; border-radius: 6px; letter-spacing: 1px;
+  }
+  .nav-title { font-weight: 700; font-size: 15px; color: #fff; }
+  .nav-btn {
+    background: var(--accent2); color: #fff;
+    border: none; border-radius: 8px;
+    padding: 8px 18px; font-size: 13px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+    transition: opacity 0.2s;
+  }
+  .nav-btn:hover { opacity: 0.85; }
+
+  /* Hero */
+  .hero {
+    padding: 6rem 5% 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.25);
+    color: var(--accent);
+    font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 99px; margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 900; color: #fff;
+    line-height: 1.1; margin-bottom: 1.25rem;
+    max-width: 700px; margin-left: auto; margin-right: auto;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p {
+    font-size: 1.1rem; color: var(--muted);
+    max-width: 540px; margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+  .hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-main {
+    background: linear-gradient(135deg, var(--accent2), #5b21b6);
+    color: #fff; border: none; border-radius: 10px;
+    padding: 14px 32px; font-size: 1rem; font-weight: 700;
+    cursor: pointer; font-family: inherit;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .btn-main:hover { transform: translateY(-2px); opacity: 0.9; }
+  .btn-outline {
+    background: transparent; color: var(--text);
+    border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 28px; font-size: 1rem;
+    cursor: pointer; font-family: inherit;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Stats */
+  .stats {
+    display: flex; justify-content: center; gap: 3rem;
+    padding: 2.5rem 5%;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .stat-item { text-align: center; }
+  .stat-num { font-size: 2rem; font-weight: 900; color: #fff; }
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; letter-spacing: 0.5px; }
+
+  /* Contents */
+  .section { padding: 4rem 5%; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .section h2 { font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 0.75rem; }
+  .section-sub { color: var(--muted); margin-bottom: 2.5rem; font-size: 1rem; line-height: 1.6; }
+
+  .chapters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 14px;
+  }
+  .chapter-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+  .chapter-card:hover { border-color: var(--accent2); transform: translateY(-2px); }
+  .ch-num { font-size: 11px; font-weight: 700; color: var(--accent2); letter-spacing: 1px; margin-bottom: 8px; }
+  .ch-title { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .ch-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+  .ch-secret { border-color: rgba(124,58,237,0.4); background: rgba(124,58,237,0.05); }
+
+  /* Pricing */
+  .pricing-section { padding: 4rem 5%; text-align: center; }
+  .price-card {
+    background: var(--card);
+    border: 1px solid var(--accent2);
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 420px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+  .price-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+  }
+  .price-badge {
+    display: inline-block;
+    background: rgba(0,212,255,0.1);
+    color: var(--accent);
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    padding: 4px 12px; border-radius: 99px; margin-bottom: 1rem;
+  }
+  .price-amount { font-size: 3.5rem; font-weight: 900; color: #fff; margin-bottom: 4px; }
+  .price-amount .currency { font-size: 1.5rem; vertical-align: super; }
+  .price-original { color: var(--muted); font-size: 0.9rem; text-decoration: line-through; margin-bottom: 1.5rem; }
+  .price-features { text-align: left; margin: 1.5rem 0; }
+  .price-feature {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem; color: var(--text);
+  }
+  .price-feature:last-child { border-bottom: none; }
+  .check { color: #4ade80; font-size: 1rem; flex-shrink: 0; }
+  .buy-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--accent2), #5b21b6);
+    color: #fff; border: none; border-radius: 12px;
+    padding: 15px; font-size: 1.05rem; font-weight: 700;
+    cursor: pointer; font-family: inherit;
+    transition: opacity 0.2s, transform 0.1s;
+    margin-top: 0.5rem;
+  }
+  .buy-btn:hover { opacity: 0.9; }
+  .buy-btn:active { transform: scale(0.98); }
+  .guarantee { color: var(--muted); font-size: 11px; margin-top: 12px; }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-left { font-size: 13px; color: var(--muted); }
+  .footer-login { font-size: 13px; color: var(--accent); cursor: pointer; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div class="nav-badge">PS5</div>
+    <div class="nav-title">Master Guide</div>
+  </div>
+  <button class="nav-btn" onclick="location.href='login.html'">Already purchased? Sign in</button>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-eyebrow">Complete PS5 eBook — 2024 Edition</div>
+  <h1>Master Your <span>PlayStation 5</span><br>Like a Pro</h1>
+  <p>9 in-depth chapters covering everything — from first setup to secret tricks only 1% of owners know. Instant access after purchase.</p>
+  <div class="hero-cta">
+    <button class="btn-main" onclick="document.querySelector('.pricing-section').scrollIntoView({behavior:'smooth'})">Get Instant Access →</button>
+    <button class="btn-outline" onclick="document.querySelector('.section').scrollIntoView({behavior:'smooth'})">See What's Inside</button>
+  </div>
+</section>
+
+<!-- Stats -->
+<div class="stats">
+  <div class="stat-item"><div class="stat-num">9<span>+</span></div><div class="stat-label">Chapters</div></div>
+  <div class="stat-item"><div class="stat-num">100<span>+</span></div><div class="stat-label">Tips & Tricks</div></div>
+  <div class="stat-item"><div class="stat-num">8<span>🔒</span></div><div class="stat-label">Secret Tricks</div></div>
+  <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Lifetime Access</div></div>
+</div>
+
+<!-- Contents -->
+<section class="section">
+  <div class="section-label">What's Inside</div>
+  <h2>Everything PS5 — In One Guide</h2>
+  <p class="section-sub">From day-one setup to expert-level tricks — all written in clear, simple English. No fluff, no filler.</p>
+
+  <div class="chapters-grid">
+    <div class="chapter-card">
+      <div class="ch-num">CHAPTER 01</div>
+      <div class="ch-title">Setup & Settings</div>
+      <div class="ch-desc">Perfect first-time setup, hidden settings, 4K/120fps configuration, and storage tips.</div>
+    </div>
+    <div class="chapter-card">
+      <div class="ch-num">CHAPTER 02</div>
+      <div class="ch-title">Best Games Guide</div>
+      <div class="ch-desc">Top exclusives, hidden gems, and genre-by-genre recommendations with honest ratings.</div>
+    </div>
+    <div class="chapter-card">
+      <div class="ch-num">CHAPTER 03</div>
+      <div class="ch-title">Online Gaming & PS Plus</div>
+      <div class="ch-desc">Which PS Plus tier is worth it, how to reduce lag, and multiplayer secrets.</div>
+    </div>
+    <div class="chapter-card">
+      <div class="ch-num">CHAPTER 04</div>
+      <div class="ch-title">Streaming & 4K</div>
+      <div class="ch-desc">Netflix, Disney+, perfect HDR calibration, and Tempest 3D Audio setup.</div>
+    </div>
+    <div class="chapter-card">
+      <div class="ch-num">CHAPTER 05</div>
+      <div class="ch-title">Accessories Guide</div>
+      <div class="ch-desc">The best upgrades actually worth buying — and the ones that waste your money.</div>
+    </div>
+    <div class="chapter-card">
+      <div class="ch-num">CHAPTER 06</div>
+      <div class="ch-title">Troubleshooting & Fixes</div>
+      <div class="ch-desc">Overheating, controller drift, error codes, and step-by-step solutions.</div>
+    </div>
+    <div class="chapter-card">
+      <div class="ch-num">CHAPTER 07</div>
+      <div class="ch-title">Pro Tips & Tricks</div>
+      <div class="ch-desc">Hidden features, controller shortcuts, and advanced techniques most owners never discover.</div>
+    </div>
+    <div class="chapter-card">
+      <div class="ch-num">CHAPTER 08</div>
+      <div class="ch-title">PS5 vs Xbox</div>
+      <div class="ch-desc">An honest data-driven comparison — which console is actually better for you?</div>
+    </div>
+    <div class="chapter-card ch-secret">
+      <div class="ch-num" style="color:var(--accent2)">CHAPTER 09 — 🔒 EXCLUSIVE</div>
+      <div class="ch-title">Secret Guide</div>
+      <div class="ch-desc">8 insider secrets PlayStation doesn't advertise — free games, price hacks, hidden features, and more.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing-section">
+  <div class="section-label">Get Access</div>
+  <h2 style="font-size:2rem;font-weight:800;color:#fff;margin-bottom:0.5rem;">One-Time Purchase</h2>
+  <p style="color:var(--muted);margin-bottom:2rem">Lifetime access — including all future updates</p>
+
+  <div class="price-card">
+    <div class="price-badge">COMPLETE EDITION</div>
+    <div class="price-amount"><span class="currency">₹</span>299</div>
+    <div class="price-original">Regular price ₹799</div>
+
+    <div class="price-features">
+      <div class="price-feature"><span class="check">✓</span>All 9 chapters — instant web access</div>
+      <div class="price-feature"><span class="check">✓</span>8 exclusive secret tricks (Chapter 9)</div>
+      <div class="price-feature"><span class="check">✓</span>Read on any device — phone, tablet, PC</div>
+      <div class="price-feature"><span class="check">✓</span>Lifetime access + free updates</div>
+      <div class="price-feature"><span class="check">✓</span>Personal login credentials emailed instantly</div>
+    </div>
+
+    <!-- Replace the onclick with your actual payment gateway (Razorpay, etc.) -->
+    <button class="buy-btn" onclick="alert('Connect your payment gateway here — Razorpay, UPI, etc.')">Buy Now for ₹299 →</button>
+    <div class="guarantee">🔒 Secure payment &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; No subscription</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left">© 2024 PS5 Master Guide. All rights reserved.</div>
+  <div class="footer-login" onclick="location.href='login.html'">Already purchased? Sign in →</div>
+</footer>
+
+</body>
+</html>
