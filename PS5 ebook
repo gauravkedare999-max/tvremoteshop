@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PS5 Master Guide – Dominate Every Game</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:   #0a0a0f;
+    --deep:    #12121a;
+    --panel:   #1a1a28;
+    --border:  #2a2a40;
+    --blue:    #0070f3;
+    --electric:#00cfff;
+    --white:   #f0f0ff;
+    --muted:   #8888aa;
+    --gold:    #ffd246;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 24px 80px;
+    position: relative;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0,112,243,0.35) 0%, transparent 70%),
+      var(--black);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230070f3' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(0,207,255,0.12);
+    border: 1px solid rgba(0,207,255,0.3);
+    color: var(--electric);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(52px, 10vw, 110px);
+    font-weight: 900;
+    line-height: 0.92;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    max-width: 900px;
+  }
+
+  .hero h1 span {
+    color: var(--electric);
+    display: block;
+  }
+
+  .hero-sub {
+    margin-top: 24px;
+    font-size: clamp(16px, 2vw, 19px);
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.55;
+  }
+
+  .price-wrap {
+    margin-top: 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .price-label { font-size: 12px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; }
+
+  .price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--gold);
+  }
+
+  .price sup { font-size: 32px; vertical-align: top; margin-top: 12px; }
+
+  .cta-btn {
+    margin-top: 28px;
+    display: inline-block;
+    background: var(--blue);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 18px 52px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+    box-shadow: 0 0 32px rgba(0,112,243,0.45);
+    cursor: pointer;
+    border: none;
+  }
+
+  .cta-btn:hover {
+    background: #0060d0;
+    transform: translateY(-2px);
+    box-shadow: 0 0 48px rgba(0,112,243,0.65);
+  }
+
+  .guarantee {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ── SOCIAL PROOF ── */
+  .strip {
+    background: var(--deep);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 24px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 36px;
+  }
+
+  .stat { text-align: center; }
+  .stat-n {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--electric);
+  }
+  .stat-l { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 80px 24px; max-width: 900px; margin: 0 auto; }
+
+  .section-eye {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--electric);
+    margin-bottom: 12px;
+  }
+
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(36px, 6vw, 60px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  /* ── WHAT'S INSIDE ── */
+  .chapters {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .chapter {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    transition: border-color 0.2s;
+  }
+
+  .chapter:hover { border-color: var(--electric); }
+
+  .chapter-icon { font-size: 28px; margin-bottom: 12px; }
+
+  .chapter h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--white);
+  }
+
+  .chapter p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  /* ── WHO THIS IS FOR ── */
+  .for-list { list-style: none; margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
+
+  .for-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-size: 15px;
+  }
+
+  .for-list li .icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── TESTIMONIALS ── */
+  .reviews {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .review {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px;
+  }
+
+  .stars { color: var(--gold); font-size: 14px; margin-bottom: 10px; }
+  .review p { font-size: 14px; color: #ccc; line-height: 1.55; margin-bottom: 14px; }
+  .reviewer { font-size: 12px; color: var(--muted); font-weight: 600; }
+
+  /* ── BOTTOM CTA ── */
+  .bottom-cta {
+    background: linear-gradient(135deg, #0d0d20 0%, #0a1628 100%);
+    border-top: 1px solid var(--border);
+    padding: 80px 24px;
+    text-align: center;
+  }
+
+  .bottom-cta h2 { max-width: 700px; margin: 0 auto 16px; }
+  .bottom-cta p { color: var(--muted); margin-bottom: 36px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep);
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 52px; }
+    .price { font-size: 56px; }
+    .strip { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">🎮 PS5 Ultimate Guide — 2024 Edition</div>
+  <h1>Master Your<span>PS5.</span>Dominate Every Game.</h1>
+  <p class="hero-sub">The only guide you need — hidden settings, DualSense secrets, trophy hunting, and pro strategies all in one PDF.</p>
+
+  <div class="price-wrap">
+    <span class="price-label">One-time price</span>
+    <div class="price"><sup>$</sup>29</div>
+  </div>
+
+  <!-- 🔴 REPLACE href WITH YOUR GUMROAD LINK -->
+  <a class="cta-btn" href="https://gumroad.com/YOUR_PRODUCT_LINK" target="_blank">
+    ⚡ Buy Now — Instant Download
+  </a>
+  <p class="guarantee">🔒 Secure payment via Gumroad &nbsp;·&nbsp; Instant PDF delivery &nbsp;·&nbsp; Works worldwide</p>
+</section>
+
+<!-- STATS STRIP -->
+<div class="strip">
+  <div class="stat"><div class="stat-n">150+</div><div class="stat-l">Pages</div></div>
+  <div class="stat"><div class="stat-n">50+</div><div class="stat-l">Pro Tips</div></div>
+  <div class="stat"><div class="stat-n">2,000+</div><div class="stat-l">Copies Sold</div></div>
+  <div class="stat"><div class="stat-n">4.9★</div><div class="stat-l">Rating</div></div>
+</div>
+
+<hr class="divider">
+
+<!-- WHAT'S INSIDE -->
+<section>
+  <p class="section-eye">Inside the eBook</p>
+  <h2>Everything You Get</h2>
+  <p style="color:var(--muted); max-width:600px;">From beginner setups to advanced tournament-level tactics — this guide covers it all.</p>
+
+  <div class="chapters">
+    <div class="chapter">
+      <div class="chapter-icon">⚙️</div>
+      <h3>PS5 Hidden Settings</h3>
+      <p>Unlock secret menus, boost FPS, and optimize your console for peak performance.</p>
+    </div>
+    <div class="chapter">
+      <div class="chapter-icon">🎮</div>
+      <h3>DualSense Mastery</h3>
+      <p>Use haptic feedback and adaptive triggers to feel every game like never before.</p>
+    </div>
+    <div class="chapter">
+      <div class="chapter-icon">🏆</div>
+      <h3>Trophy Hunting Guide</h3>
+      <p>Step-by-step walkthroughs to unlock Platinum trophies in top PS5 games.</p>
+    </div>
+    <div class="chapter">
+      <div class="chapter-icon">🌐</div>
+      <h3>Online Multiplayer Tips</h3>
+      <p>Reduce lag, build winning squads, and dominate ranked matches consistently.</p>
+    </div>
+    <div class="chapter">
+      <div class="chapter-icon">💾</div>
+      <h3>Storage & Speed Tricks</h3>
+      <p>Best SSDs, game management tricks, and load time hacks explained simply.</p>
+    </div>
+    <div class="chapter">
+      <div class="chapter-icon">🔊</div>
+      <h3>Audio & Display Setup</h3>
+      <p>Configure Tempest 3D Audio and 4K HDR for the ultimate immersive setup.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WHO IT'S FOR -->
+<section>
+  <p class="section-eye">Is this for you?</p>
+  <h2>Made For These Players</h2>
+
+  <ul class="for-list">
+    <li><span class="icon">🆕</span> <span>New PS5 owners who want to get the most out of their console from day one</span></li>
+    <li><span class="icon">🎯</span> <span>Casual gamers who want to level up and finally beat their friends online</span></li>
+    <li><span class="icon">🏅</span> <span>Trophy hunters looking for proven Platinum shortcuts</span></li>
+    <li><span class="icon">🔧</span> <span>Tech-curious players who want to tweak settings for the best experience</span></li>
+  </ul>
+</section>
+
+<hr class="divider">
+
+<!-- TESTIMONIALS -->
+<section>
+  <p class="section-eye">What Players Say</p>
+  <h2>Real Reviews</h2>
+
+  <div class="reviews">
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p>"Got my first Platinum trophy within a week of reading this. The trophy hunting chapter alone is worth $29."</p>
+      <div class="reviewer">— Arjun M., Mumbai</div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p>"The hidden settings section literally doubled my FPS in some games. I had no idea these options existed."</p>
+      <div class="reviewer">— Jake T., London</div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p>"Finally a guide that doesn't talk down to you. Clear, practical, and packed with tips I actually use daily."</p>
+      <div class="reviewer">— Sofia R., Brazil</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta">
+  <p class="section-eye">Ready?</p>
+  <h2>Stop Guessing. Start Dominating.</h2>
+  <p>Instant PDF download. Works on phone, tablet, or PC. No subscription.</p>
+
+  <!-- 🔴 REPLACE href WITH YOUR GUMROAD LINK -->
+  <a class="cta-btn" href="https://gumroad.com/YOUR_PRODUCT_LINK" target="_blank">
+    ⚡ Get The Guide — $29
+  </a>
+  <p style="margin-top:16px; font-size:13px; color:var(--muted);">🌍 Worldwide delivery &nbsp;·&nbsp; 📄 Instant PDF &nbsp;·&nbsp; 🔒 Secure Checkout</p>
+</div>
+
+<footer>
+  &copy; 2024 PS5 Master Guide &nbsp;·&nbsp; All rights reserved &nbsp;·&nbsp; support@yoursite.com
+</footer>
+
+</body>
+</html>
