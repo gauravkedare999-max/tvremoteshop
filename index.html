@@ -223,6 +223,38 @@ color:#333;
 font-size:13px;
 }
 
+.mainnav{
+position:sticky;
+top:0;
+z-index:900;
+background:#0a58ca;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:6px;
+padding:10px 80px 10px 15px;
+box-shadow:0 2px 8px rgba(0,0,0,.15);
+}
+
+.mainnav a{
+color:#fff;
+text-decoration:none;
+font-size:14px;
+font-weight:bold;
+padding:8px 14px;
+border-radius:6px;
+transition:background .2s;
+}
+
+.mainnav a:hover{
+background:rgba(255,255,255,.15);
+}
+
+@media (max-width:480px){
+  .mainnav{gap:2px;padding:8px 8px;}
+  .mainnav a{font-size:12px;padding:6px 8px;}
+}
+
 .hero{
 position:relative;
 padding:60px 20px;
@@ -497,6 +529,33 @@ text-align:center;
 margin-top:20px;
 }
 
+.referral-box{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+justify-content:center;
+max-width:500px;
+margin:0 auto;
+}
+
+.referral-box input{
+flex:1;
+min-width:180px;
+padding:10px 12px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:14px;
+background:#fff;
+}
+
+.referral-msg{
+margin-top:10px;
+font-size:13px;
+color:#2e7d32;
+font-weight:bold;
+min-height:18px;
+}
+
 .review{
 background:white;
 padding:15px;
@@ -570,6 +629,223 @@ z-index:999;
 box-shadow:0 2px 10px rgba(0,0,0,.2);
 }
 
+/* Cart icon */
+.cart-icon-btn{
+position:fixed;
+top:15px;
+right:15px;
+background:#0a58ca;
+color:#fff;
+border:none;
+width:52px;
+height:52px;
+border-radius:50%;
+cursor:pointer;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.25);
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.cart-icon-btn svg{
+width:26px;
+height:26px;
+}
+
+.cart-badge{
+position:absolute;
+top:-4px;
+right:-4px;
+background:#ffcc00;
+color:#000;
+font-size:12px;
+font-weight:bold;
+min-width:20px;
+height:20px;
+border-radius:10px;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:0 4px;
+}
+
+/* Cart drawer */
+.cart-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.45);
+z-index:1001;
+display:none;
+}
+
+.cart-overlay.open{display:block;}
+
+.cart-drawer{
+position:fixed;
+top:0;
+right:-360px;
+width:340px;
+max-width:90vw;
+height:100%;
+background:#fff;
+z-index:1002;
+box-shadow:-4px 0 20px rgba(0,0,0,.2);
+transition:right .3s ease;
+display:flex;
+flex-direction:column;
+}
+
+.cart-drawer.open{right:0;}
+
+.cart-header{
+padding:18px;
+background:#0a58ca;
+color:#fff;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.cart-header h3{font-size:18px;}
+
+.cart-close{
+background:none;
+border:none;
+color:#fff;
+font-size:22px;
+cursor:pointer;
+line-height:1;
+}
+
+.cart-items{
+flex:1;
+overflow-y:auto;
+padding:15px;
+}
+
+.cart-empty{
+text-align:center;
+color:#888;
+margin-top:40px;
+font-size:14px;
+}
+
+.cart-item{
+display:flex;
+gap:10px;
+align-items:center;
+padding:10px 0;
+border-bottom:1px solid #eee;
+}
+
+.cart-item img{
+width:55px;
+height:55px;
+object-fit:cover;
+border-radius:8px;
+background:#f0f0f0;
+}
+
+.cart-item-info{flex:1;}
+
+.cart-item-info h4{
+font-size:14px;
+margin-bottom:4px;
+}
+
+.cart-item-price{
+color:#0a58ca;
+font-weight:bold;
+font-size:14px;
+}
+
+.qty-controls{
+display:flex;
+align-items:center;
+gap:8px;
+margin-top:6px;
+}
+
+.qty-controls button{
+width:24px;
+height:24px;
+border:1px solid #ccc;
+background:#f5f5f5;
+border-radius:5px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.cart-remove{
+background:none;
+border:none;
+color:#c00;
+font-size:13px;
+cursor:pointer;
+text-decoration:underline;
+margin-top:4px;
+}
+
+.cart-footer{
+padding:15px 18px;
+border-top:1px solid #eee;
+}
+
+.cart-total{
+display:flex;
+justify-content:space-between;
+font-weight:bold;
+font-size:16px;
+margin-bottom:12px;
+}
+
+.checkout-btn{
+display:block;
+width:100%;
+background:#25D366;
+color:#fff;
+text-align:center;
+padding:12px;
+border-radius:8px;
+font-weight:bold;
+text-decoration:none;
+}
+
+.cart-toast{
+position:fixed;
+bottom:90px;
+left:50%;
+transform:translate(-50%,20px);
+background:#111;
+color:#fff;
+padding:12px 20px;
+border-radius:30px;
+font-size:14px;
+font-weight:bold;
+box-shadow:0 4px 14px rgba(0,0,0,.3);
+z-index:1100;
+opacity:0;
+transition:opacity .25s, transform .25s;
+pointer-events:none;
+}
+
+.cart-toast.show{
+opacity:1;
+transform:translate(-50%,0);
+}
+
+.stock-badge{
+display:inline-block;
+background:#ffe5e5;
+color:#c0392b;
+font-size:12px;
+font-weight:bold;
+padding:3px 10px;
+border-radius:20px;
+margin-bottom:8px;
+}
+
 @media (max-width:480px){
   .hero h2{font-size:24px;}
   .hero p{font-size:15px;}
@@ -579,9 +855,39 @@ box-shadow:0 2px 10px rgba(0,0,0,.2);
 
 <body>
 
+<!-- Cart icon -->
+<button class="cart-icon-btn" onclick="toggleCart(true)" aria-label="Open cart">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="9" cy="21" r="1"></circle>
+    <circle cx="20" cy="21" r="1"></circle>
+    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+  </svg>
+  <span class="cart-badge" id="cartBadge">0</span>
+</button>
+
+<!-- Cart drawer -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart(false)"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>🛒 Your Cart</h3>
+    <button class="cart-close" onclick="toggleCart(false)" aria-label="Close cart">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <p class="cart-empty">Cart khali hai. Kuch remote add karein!</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cartTotal">₹0</span>
+    </div>
+    <a href="#" id="checkoutBtn" class="checkout-btn" target="_blank" rel="noopener">Checkout on WhatsApp</a>
+  </div>
+</div>
+
 <div class="topbar">
 🎁 FREE Battery Included | 🚚 All India Delivery | Refer &amp; Earn 🎁 Free OTT Coupon
 </div>
+
 
 <header>
   <img src="https://raw.githubusercontent.com/gauravkedare999-max/tvremoteshop/main/logo-tvremoteshopin-8295a7.png"
@@ -590,6 +896,15 @@ box-shadow:0 2px 10px rgba(0,0,0,.2);
   <h1>TV Remote Shop India</h1>
   <p>भारत का भरोसेमंद TV Remote Store</p>
 </header>
+
+<nav class="mainnav" aria-label="Main navigation">
+  <a href="#brands">Brands</a>
+  <a href="#ps5">PS5 Controller</a>
+  <a href="#bestsellers">Best Sellers</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#faq">FAQ</a>
+  <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener">Contact</a>
+</nav>
 
 <main>
 
@@ -783,22 +1098,25 @@ box-shadow:0 2px 10px rgba(0,0,0,.2);
     <div class="card">
       <img src="images/sony-voice-remote.jpg" alt="Sony TV Voice Remote India" loading="lazy" width="250" height="180">
       <h3>Sony Voice Remote</h3>
+      <span class="stock-badge">⚡ Only 6 left</span>
       <div class="price">₹1299</div>
-      <button class="order-btn">Order Now</button>
+      <button class="order-btn" onclick="addToCart('Sony Voice Remote',1299,'images/sony-voice-remote.jpg')">🛒 Add to Cart</button>
     </div>
 
     <div class="card">
       <img src="images/samsung-voice-remote.jpg" alt="Samsung TV Voice Remote India" loading="lazy" width="250" height="180">
       <h3>Samsung Smart Remote</h3>
+      <span class="stock-badge">⚡ Only 4 left</span>
       <div class="price">₹1499</div>
-      <button class="order-btn">Order Now</button>
+      <button class="order-btn" onclick="addToCart('Samsung Smart Remote',1499,'images/samsung-voice-remote.jpg')">🛒 Add to Cart</button>
     </div>
 
     <div class="card">
       <img src="images/LG-voice-remote.jpg" alt="LG TV Voice Remote India" loading="lazy" width="250" height="180">
       <h3>LG Magic Remote</h3>
+      <span class="stock-badge">⚡ Only 8 left</span>
       <div class="price">₹1999</div>
-      <button class="order-btn">Order Now</button>
+      <button class="order-btn" onclick="addToCart('LG Magic Remote',1999,'images/LG-voice-remote.jpg')">🛒 Add to Cart</button>
     </div>
 
   </div>
@@ -808,7 +1126,11 @@ box-shadow:0 2px 10px rgba(0,0,0,.2);
   <h2>Refer &amp; Earn 🎁 Free OTT Coupon</h2>
   <p>अपने Referral Link से हर सफल ऑर्डर पर ₹100 कमाएँ</p>
   <br>
-  <button class="order-btn">Copy Referral Link</button>
+  <div class="referral-box">
+    <input type="text" id="referralLinkInput" readonly>
+    <button class="order-btn" onclick="copyReferralLink()">Copy Referral Link</button>
+  </div>
+  <p class="referral-msg" id="referralMsg"></p>
 </section>
 
 <section class="section" id="reviews">
@@ -861,6 +1183,153 @@ box-shadow:0 2px 10px rgba(0,0,0,.2);
 </footer>
 
 <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+
+<script>
+const CART_KEY = 'tvrs_cart';
+const WHATSAPP_NUMBER = '91XXXXXXXXXX'; // <-- apna WhatsApp number yahan daalein (country code ke saath, + nahi)
+
+function getCart(){
+  try{
+    return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+  }catch(e){
+    return [];
+  }
+}
+
+function saveCart(cart){
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  renderCart();
+}
+
+function addToCart(name, price, img){
+  let cart = getCart();
+  const existing = cart.find(item => item.name === name);
+  if(existing){
+    existing.qty += 1;
+  }else{
+    cart.push({name, price, img, qty:1});
+  }
+  saveCart(cart);
+  showToast('✅ ' + name + ' cart mein add ho gaya');
+  toggleCart(true);
+}
+
+function changeQty(name, delta){
+  let cart = getCart();
+  const item = cart.find(i => i.name === name);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty <= 0){
+    cart = cart.filter(i => i.name !== name);
+  }
+  saveCart(cart);
+}
+
+function removeItem(name){
+  let cart = getCart().filter(i => i.name !== name);
+  saveCart(cart);
+}
+
+function renderCart(){
+  const cart = getCart();
+  const itemsBox = document.getElementById('cartItems');
+  const badge = document.getElementById('cartBadge');
+  const totalBox = document.getElementById('cartTotal');
+  const checkoutBtn = document.getElementById('checkoutBtn');
+
+  const totalQty = cart.reduce((sum,i) => sum + i.qty, 0);
+  badge.textContent = totalQty;
+
+  if(cart.length === 0){
+    itemsBox.innerHTML = '<p class="cart-empty">Cart khali hai. Kuch remote add karein!</p>';
+    totalBox.textContent = '₹0';
+    checkoutBtn.setAttribute('href', '#');
+    return;
+  }
+
+  let total = 0;
+  itemsBox.innerHTML = cart.map(item => {
+    total += item.price * item.qty;
+    return `
+      <div class="cart-item">
+        <img src="${item.img}" alt="${item.name}">
+        <div class="cart-item-info">
+          <h4>${item.name}</h4>
+          <div class="cart-item-price">₹${item.price} x ${item.qty} = ₹${item.price * item.qty}</div>
+          <div class="qty-controls">
+            <button onclick="changeQty('${item.name}', -1)">−</button>
+            <span>${item.qty}</span>
+            <button onclick="changeQty('${item.name}', 1)">+</button>
+          </div>
+          <button class="cart-remove" onclick="removeItem('${item.name}')">Remove</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  totalBox.textContent = '₹' + total;
+
+  let msg = 'Namaste, mujhe yeh order karna hai:%0A%0A';
+  cart.forEach(item => {
+    msg += `${item.name} x ${item.qty} - ₹${item.price * item.qty}%0A`;
+  });
+  msg += `%0ATotal: ₹${total}`;
+  checkoutBtn.setAttribute('href', `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`);
+}
+
+function toggleCart(open){
+  document.getElementById('cartDrawer').classList.toggle('open', open);
+  document.getElementById('cartOverlay').classList.toggle('open', open);
+}
+
+/* Referral link: generates a per-visitor code stored in the browser, so the
+   same person always sees the same link (real tracking needs a backend). */
+function getReferralCode(){
+  let code = localStorage.getItem('tvrs_ref_code');
+  if(!code){
+    code = 'REF' + Math.random().toString(36).substring(2,8).toUpperCase();
+    localStorage.setItem('tvrs_ref_code', code);
+  }
+  return code;
+}
+
+function setupReferralLink(){
+  const input = document.getElementById('referralLinkInput');
+  if(!input) return;
+  input.value = 'https://tvremoteshop.in/?ref=' + getReferralCode();
+}
+
+function copyReferralLink(){
+  const input = document.getElementById('referralLinkInput');
+  const msg = document.getElementById('referralMsg');
+  input.select();
+  input.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(input.value).then(() => {
+    msg.textContent = '✅ Link copy ho gaya! Ab ise share karein.';
+    setTimeout(() => { msg.textContent = ''; }, 3000);
+  }).catch(() => {
+    msg.textContent = 'Link select ho gaya hai, ab Ctrl+C se copy karein.';
+  });
+}
+
+/* Toast notification shown when an item is added to the cart */
+function showToast(text){
+  let toast = document.getElementById('cartToast');
+  if(!toast){
+    toast = document.createElement('div');
+    toast.id = 'cartToast';
+    toast.className = 'cart-toast';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = text;
+  toast.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+}
+
+renderCart();
+setupReferralLink();
+</script>
 
 </body>
 </html>
