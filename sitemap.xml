@@ -2,38 +2,77 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tvremoteshop.in/</loc>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://tvremoteshop.in/Sony-tv-remotenew.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://tvremoteshop.in/Samsung-tv-remotenew.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://tvremoteshop.in/LG-tv-remotenew.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://tvremoteshop.in/Ps5-controller.html</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tvremoteshop.in/Samsung-tv-remotenew.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tvremoteshop.in/LG-tv-remotenew.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tvremoteshop.in/mi-tv-remote.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tvremoteshop.in/tcl-tv-remote.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tvremoteshop.in/oneplus-tv-remote.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tvremoteshop.in/panasonic-tv-remote.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tvremoteshop.in/vu-tv-remote.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tvremoteshop.in/Ps5-controller.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tvremoteshop.in/ps5-guide-ebook.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tvremoteshop.in/about.html</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://tvremoteshop.in/contact.html</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://tvremoteshop.in/privacy-policy.html</loc>
+    <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://tvremoteshop.in/terms-conditions.html</loc>
+    <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 </urlset>
